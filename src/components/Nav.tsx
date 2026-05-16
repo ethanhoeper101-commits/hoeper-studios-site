@@ -18,9 +18,9 @@ export default function Nav() {
           <Image
             src="/logo.png"
             alt="Hoeper Studios"
-            width={180}
-            height={50}
-            className="h-11 w-auto object-contain"
+            width={280}
+            height={80}
+            className="h-16 w-auto object-contain"
             priority
           />
         </a>
