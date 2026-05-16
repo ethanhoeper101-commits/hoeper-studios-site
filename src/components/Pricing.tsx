@@ -55,16 +55,16 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-28 md:py-36 px-8 bg-surface-dark">
+    <section id="pricing" className="py-32 md:py-40 px-8 bg-surface-dark">
       <div className="max-w-[1400px] mx-auto">
-        <p className="text-sm font-bold tracking-widest text-gold text-center mb-5">
+        <p className="text-sm font-bold tracking-widest text-gold text-center mb-6">
           PRICING
         </p>
 
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-5">
           Simple, transparent packages
         </h2>
-        <p className="text-gray-muted text-center text-base mb-20">
+        <p className="text-gray-muted text-center text-lg mb-24">
           No hidden fees. No long-term contracts. Cancel anytime.
         </p>
 
@@ -93,17 +93,17 @@ export default function Pricing() {
                 </h3>
 
                 <div className="mb-2">
-                  <span className="text-5xl font-bold text-white">{plan.price}</span>
-                  <span className="text-gray-muted text-sm ml-2">{plan.billing}</span>
+                  <span className="text-6xl font-bold text-white">{plan.price}</span>
+                  <span className="text-gray-muted text-base ml-3">{plan.billing}</span>
                 </div>
-                <p className="text-gold/70 text-sm tracking-wide mb-10">
+                <p className="text-gold/70 text-base tracking-wide mb-10">
                   + {plan.hosting}
                 </p>
 
-                <ul className="flex flex-col gap-4 flex-1">
+                <ul className="flex flex-col gap-5 flex-1">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-base text-white">
-                      <IconCheck size={18} className="text-gold flex-shrink-0 mt-0.5" />
+                    <li key={feature} className="flex items-start gap-3 text-lg text-white">
+                      <IconCheck size={20} className="text-gold flex-shrink-0 mt-1" />
                       <span>{feature}</span>
                     </li>
                   ))}

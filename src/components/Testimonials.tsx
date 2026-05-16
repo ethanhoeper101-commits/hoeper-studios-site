@@ -23,13 +23,13 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-28 md:py-36 px-8">
+    <section id="testimonials" className="py-32 md:py-40 px-8">
       <div className="max-w-[1400px] mx-auto">
-        <p className="text-sm font-bold tracking-widest text-gold text-center mb-5">
+        <p className="text-sm font-bold tracking-widest text-gold text-center mb-6">
           TESTIMONIALS
         </p>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-20">
+        <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-24">
           What clients are saying
         </h2>
 
@@ -37,21 +37,21 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-surface-card border border-border-subtle rounded-sm p-10 flex flex-col gap-6"
+              className="bg-surface-card border border-border-subtle rounded-sm p-12 flex flex-col gap-7"
             >
-              <div className="flex gap-1">
+              <div className="flex gap-1.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <IconStarFilled key={i} size={20} className="text-gold" />
+                  <IconStarFilled key={i} size={24} className="text-gold" />
                 ))}
               </div>
 
-              <p className="text-white/90 italic text-base leading-relaxed flex-1">
+              <p className="text-white/90 italic text-lg leading-relaxed flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
               <div>
-                <p className="text-white font-semibold text-base">{t.name}</p>
-                <p className="text-gray-muted text-sm mt-1">{t.location}</p>
+                <p className="text-white font-semibold text-lg">{t.name}</p>
+                <p className="text-gray-muted text-base mt-1">{t.location}</p>
               </div>
             </div>
           ))}
