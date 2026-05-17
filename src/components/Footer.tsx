@@ -1,5 +1,8 @@
+import FadeUp from "./FadeUp";
+
 export default function Footer() {
   return (
+    <FadeUp>
     <footer
       id="contact"
       className="border-t border-white/5 bg-black py-16 px-8"
@@ -27,5 +30,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </FadeUp>
   );
 }

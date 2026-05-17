@@ -1,5 +1,8 @@
+import FadeUp from "./FadeUp";
+
 export default function UrgencyBar() {
   return (
+    <FadeUp>
     <div className="w-full bg-surface-dark border-y border-white/5 py-7">
       <div className="max-w-[1400px] mx-auto px-8 flex items-center justify-center gap-5">
         <span className="relative flex h-4 w-4 flex-shrink-0">
@@ -17,5 +20,6 @@ export default function UrgencyBar() {
         </p>
       </div>
     </div>
+    </FadeUp>
   );
 }

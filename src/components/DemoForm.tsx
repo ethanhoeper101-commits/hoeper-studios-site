@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import FadeUp from "./FadeUp";
 
 const inputClass =
   "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-xl px-8 py-6 rounded-sm placeholder-white/30 transition-colors";
@@ -52,7 +53,7 @@ export default function DemoForm() {
         }}
       />
 
-      <div className="relative z-10 max-w-[1000px] mx-auto">
+      <FadeUp className="relative z-10 max-w-[1000px] mx-auto">
         <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
           FREE DEMO
         </p>
@@ -167,7 +168,7 @@ export default function DemoForm() {
             I&apos;ll be in touch within 24 hours.
           </p>
         </form>
-      </div>
+      </FadeUp>
     </section>
   );
 }

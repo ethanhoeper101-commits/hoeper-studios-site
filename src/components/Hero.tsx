@@ -1,3 +1,5 @@
+import FadeUp from "./FadeUp";
+
 const niches = [
   "TREE SERVICES",
   "PLUMBING",
@@ -23,57 +25,69 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-8 text-center py-16">
         {/* Gold rule */}
-        <div className="flex items-center justify-center mb-12">
-          <div className="h-px w-36 bg-gold" />
-        </div>
+        <FadeUp delay={0}>
+          <div className="flex items-center justify-center mb-12">
+            <div className="h-px w-36 bg-gold" />
+          </div>
+        </FadeUp>
 
         {/* Headline */}
-        <h1 className="mb-10">
-          <span className="block text-5xl md:text-6xl font-medium text-white leading-snug mb-6">
-            Your business deserves a website that
-          </span>
-          <span className="block text-8xl md:text-9xl lg:text-[11rem] font-bold italic text-gold leading-tight">
-            actually works.
-          </span>
-        </h1>
+        <FadeUp delay={0.05}>
+          <h1 className="mb-10">
+            <span className="block text-5xl md:text-6xl font-medium text-white leading-snug mb-6">
+              Your business deserves a website that
+            </span>
+            <span className="block text-8xl md:text-9xl lg:text-[11rem] font-bold italic text-gold leading-tight">
+              actually works.
+            </span>
+          </h1>
+        </FadeUp>
 
         {/* Pain point */}
-        <p className="text-gray-muted italic text-2xl md:text-3xl mb-16 max-w-3xl mx-auto leading-relaxed">
-          Still losing customers to competitors with a better online presence?
-        </p>
+        <FadeUp delay={0.1}>
+          <p className="text-gray-muted italic text-2xl md:text-3xl mb-16 max-w-3xl mx-auto leading-relaxed">
+            Still losing customers to competitors with a better online presence?
+          </p>
+        </FadeUp>
 
         {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-14">
-          <a
-            href="#demo"
-            className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
-          >
-            GET YOUR FREE DEMO
-          </a>
-          <a
-            href="#pricing"
-            className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 border border-gold/50 hover:border-gold text-gold hover:bg-gold/5 transition-colors rounded-sm"
-          >
-            SEE PRICING
-          </a>
-        </div>
+        <FadeUp delay={0.15}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-14">
+            <a
+              href="#demo"
+              className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
+            >
+              GET YOUR FREE DEMO
+            </a>
+            <a
+              href="#pricing"
+              className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 border border-gold/50 hover:border-gold text-gold hover:bg-gold/5 transition-colors rounded-sm"
+            >
+              SEE PRICING
+            </a>
+          </div>
+        </FadeUp>
 
         {/* Trust signals */}
-        <p className="text-gold/70 text-lg tracking-wider mb-16">
-          Fast turnaround &nbsp;·&nbsp; SEO optimized &nbsp;·&nbsp; No contracts
-        </p>
+        <FadeUp delay={0.2}>
+          <p className="text-gold/70 text-lg tracking-wider mb-16">
+            Fast turnaround &nbsp;·&nbsp; SEO optimized &nbsp;·&nbsp; No contracts
+          </p>
+        </FadeUp>
 
         {/* Niche pills */}
-        <div className="flex flex-wrap justify-center gap-4">
-          {niches.map((niche) => (
-            <span
-              key={niche}
-              className="text-base font-bold tracking-widest text-gold/80 border border-gold/30 px-8 py-4 rounded-sm"
-            >
-              {niche}
-            </span>
-          ))}
-        </div>
+        <FadeUp delay={0.25}>
+          <div className="flex flex-wrap justify-center gap-4">
+            {niches.map((niche) => (
+              <span
+                key={niche}
+                className="text-base font-bold tracking-widest text-gold/80 border border-gold/30 px-8 py-4 rounded-sm"
+              >
+                {niche}
+              </span>
+            ))}
+          </div>
+        </FadeUp>
       </div>
     </section>
   );
