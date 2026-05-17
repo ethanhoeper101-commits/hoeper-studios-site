@@ -38,18 +38,21 @@ const plans = [
     name: "Pro",
     price: "$1,000",
     billing: "one time",
-    hosting: "$75–100/mo hosting",
+    hosting: "$100/mo hosting",
     badge: null,
     popular: false,
+    freeHostingPromo: "3 months free hosting — then $100/mo",
     features: [
       "Everything in Growth",
-      "Online booking via Calendly",
-      "4 custom features",
+      "Logo design included",
+      "Online booking linked to Google Calendar",
       "Estimate calculator",
-      "Seasonal text campaigns",
-      "Job completion review requests",
-      "3 months free hosting",
-      "Monthly performance check-in",
+      "Seasonal text campaigns — sent automatically in spring, fall, and before storm season",
+      "Job completion review request fires after every job",
+      "Review showcase — auto-pulls Google reviews onto the site",
+      "4 custom features you choose — pick from live chat, service area map, job application form, emergency call banner, before & after gallery, and more",
+      "Monthly performance report — traffic, leads, and Google rankings",
+      "Google Analytics setup included",
     ],
   },
 ];
@@ -111,6 +114,14 @@ export default function Pricing() {
                       </li>
                     ))}
                   </ul>
+
+                  {"freeHostingPromo" in plan && plan.freeHostingPromo && (
+                    <div className="mt-8 flex items-center gap-3 rounded-sm px-5 py-4"
+                      style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.35)" }}>
+                      <span className="text-gold text-2xl leading-none">★</span>
+                      <span className="text-gold font-bold text-lg tracking-wide">{plan.freeHostingPromo}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="px-12 pb-12">
