@@ -12,18 +12,27 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-28 overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Gold radial gradient — upper right */}
+      {/* Gold radial gradient — upper right accent */}
       <div
-        className="pointer-events-none absolute -top-32 -right-32 w-[1300px] h-[1300px] rounded-full opacity-20"
+        className="pointer-events-none absolute -top-32 -right-32 w-[1300px] h-[1300px] rounded-full opacity-15"
         style={{
           background:
             "radial-gradient(circle at center, #C9A84C 0%, transparent 70%)",
         }}
       />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-8 text-center py-16">
+      {/* Centered glow behind headline */}
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[480px] rounded-full opacity-20"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, #C9A84C 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-8 text-center">
         {/* Gold rule */}
         <FadeUp delay={0}>
           <div className="flex items-center justify-center mb-12">

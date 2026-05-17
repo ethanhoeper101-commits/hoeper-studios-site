@@ -25,7 +25,7 @@ export default function Footer() {
             BASED IN IDAHO
           </p>
           <p className="text-base text-white/30 mt-2">
-            © 2025 Hoeper Studios
+            © 2026 Hoeper Studios
           </p>
         </div>
       </div>
