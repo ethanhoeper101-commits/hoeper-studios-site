@@ -12,15 +12,15 @@ const links = [
 export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
-      <div className="max-w-[1400px] mx-auto px-8 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-[1400px] mx-auto px-8 h-28 flex items-center justify-between gap-6">
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
           <Image
             src="/logo.png"
             alt="Hoeper Studios"
-            width={280}
-            height={80}
-            className="h-16 w-auto object-contain"
+            width={360}
+            height={100}
+            className="h-20 w-auto object-contain"
             priority
           />
         </a>
@@ -31,7 +31,7 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-bold tracking-widest text-white/80 hover:text-gold transition-colors px-5 py-2.5 border border-gold/30 hover:border-gold/70 rounded-sm"
+              className="text-sm font-bold tracking-widest text-white/80 hover:text-gold transition-colors px-6 py-3 border border-gold/30 hover:border-gold/70 rounded-sm"
             >
               {link.label}
             </a>
@@ -41,7 +41,7 @@ export default function Nav() {
         {/* CTA */}
         <a
           href="#demo"
-          className="flex-shrink-0 text-xs font-bold tracking-widest px-6 py-3 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
+          className="flex-shrink-0 text-sm font-bold tracking-widest px-8 py-4 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
         >
           GET FREE DEMO
         </a>

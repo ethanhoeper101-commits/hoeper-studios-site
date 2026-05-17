@@ -23,35 +23,35 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-32 md:py-40 px-8">
+    <section id="testimonials" className="py-40 md:py-52 px-8">
       <div className="max-w-[1400px] mx-auto">
-        <p className="text-sm font-bold tracking-widest text-gold text-center mb-6">
+        <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
           TESTIMONIALS
         </p>
 
-        <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-24">
+        <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white text-center mb-32">
           What clients are saying
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-surface-card border border-border-subtle rounded-sm p-12 flex flex-col gap-7"
+              className="bg-surface-card border border-border-subtle rounded-sm p-16 flex flex-col gap-9"
             >
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <IconStarFilled key={i} size={24} className="text-gold" />
+                  <IconStarFilled key={i} size={32} className="text-gold" />
                 ))}
               </div>
 
-              <p className="text-white/90 italic text-lg leading-relaxed flex-1">
+              <p className="text-white/90 italic text-xl leading-relaxed flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
               <div>
-                <p className="text-white font-semibold text-lg">{t.name}</p>
-                <p className="text-gray-muted text-base mt-1">{t.location}</p>
+                <p className="text-white font-semibold text-xl">{t.name}</p>
+                <p className="text-gray-muted text-lg mt-1.5">{t.location}</p>
               </div>
             </div>
           ))}

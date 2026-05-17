@@ -55,16 +55,16 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-32 md:py-40 px-8 bg-surface-dark">
+    <section id="pricing" className="py-40 md:py-52 px-8 bg-surface-dark">
       <div className="max-w-[1400px] mx-auto">
-        <p className="text-sm font-bold tracking-widest text-gold text-center mb-6">
+        <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
           PRICING
         </p>
 
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-5">
+        <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white text-center mb-6">
           Simple, transparent packages
         </h2>
-        <p className="text-gray-muted text-center text-lg mb-24">
+        <p className="text-gray-muted text-center text-xl mb-32">
           No hidden fees. No long-term contracts. Cancel anytime.
         </p>
 
@@ -87,33 +87,33 @@ export default function Pricing() {
                 </div>
               )}
 
-              <div className="p-10 flex-1 flex flex-col">
-                <h3 className="text-sm font-bold tracking-widest text-gold mb-8">
+              <div className="p-12 flex-1 flex flex-col">
+                <h3 className="text-base font-bold tracking-widest text-gold mb-10">
                   {plan.name.toUpperCase()}
                 </h3>
 
-                <div className="mb-2">
-                  <span className="text-6xl font-bold text-white">{plan.price}</span>
-                  <span className="text-gray-muted text-base ml-3">{plan.billing}</span>
+                <div className="mb-3">
+                  <span className="text-7xl font-bold text-white">{plan.price}</span>
+                  <span className="text-gray-muted text-lg ml-3">{plan.billing}</span>
                 </div>
-                <p className="text-gold/70 text-base tracking-wide mb-10">
+                <p className="text-gold/70 text-lg tracking-wide mb-12">
                   + {plan.hosting}
                 </p>
 
-                <ul className="flex flex-col gap-5 flex-1">
+                <ul className="flex flex-col gap-6 flex-1">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-lg text-white">
-                      <IconCheck size={20} className="text-gold flex-shrink-0 mt-1" />
+                    <li key={feature} className="flex items-start gap-4 text-xl text-white">
+                      <IconCheck size={24} className="text-gold flex-shrink-0 mt-1" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="px-10 pb-10">
+              <div className="px-12 pb-12">
                 <a
                   href="#demo"
-                  className="block w-full text-center text-sm font-bold tracking-widest py-4 rounded-sm transition-colors"
+                  className="block w-full text-center text-base font-bold tracking-widest py-5 rounded-sm transition-colors"
                   style={
                     plan.popular
                       ? { background: "#C9A84C", color: "#000" }
