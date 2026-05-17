@@ -14,13 +14,13 @@ export default function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
       <div className="max-w-[1400px] mx-auto px-8 h-28 flex items-center justify-between gap-6">
         {/* Logo */}
-        <a href="#" className="flex-shrink-0">
+        <a href="#" className="flex-shrink-0 py-1">
           <Image
             src="/logo.png"
             alt="Hoeper Studios"
-            width={360}
-            height={100}
-            className="h-20 w-auto object-contain"
+            width={400}
+            height={112}
+            className="h-24 w-auto object-contain"
             priority
           />
         </a>
