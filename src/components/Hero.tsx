@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden pt-20 md:pt-0"
     >
       {/* Gold radial gradient — upper right accent */}
       <div
@@ -35,18 +35,18 @@ export default function Hero() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-8 text-center">
         {/* Gold rule */}
         <FadeUp delay={0}>
-          <div className="flex items-center justify-center mb-12">
+          <div className="flex items-center justify-center mb-6 md:mb-7">
             <div className="h-px w-36 bg-gold" />
           </div>
         </FadeUp>
 
         {/* Headline */}
         <FadeUp delay={0.05}>
-          <h1 className="mb-10">
-            <span className="block text-5xl md:text-6xl font-medium text-white leading-snug mb-6">
+          <h1 className="mb-5 md:mb-7">
+            <span className="block text-3xl md:text-4xl font-medium text-white leading-snug mb-3 md:mb-4">
               Your business deserves a website that
             </span>
-            <span className="block text-8xl md:text-9xl lg:text-[11rem] font-bold italic text-gold leading-tight">
+            <span className="block text-5xl md:text-7xl lg:text-8xl font-bold italic text-gold leading-tight">
               actually works.
             </span>
           </h1>
@@ -54,23 +54,23 @@ export default function Hero() {
 
         {/* Pain point */}
         <FadeUp delay={0.1}>
-          <p className="text-gray-muted italic text-2xl md:text-3xl mb-16 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-muted italic text-lg md:text-xl mb-8 md:mb-8 max-w-3xl mx-auto leading-relaxed">
             Still losing customers to competitors with a better online presence?
           </p>
         </FadeUp>
 
         {/* CTA buttons */}
         <FadeUp delay={0.15}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-14">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-6 md:mb-8">
             <a
               href="#demo"
-              className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
+              className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 md:px-10 md:py-4 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
             >
               GET YOUR FREE DEMO
             </a>
             <a
               href="#pricing"
-              className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 border border-gold/50 hover:border-gold text-gold hover:bg-gold/5 transition-colors rounded-sm"
+              className="w-full sm:w-auto text-lg font-bold tracking-widest px-14 py-6 md:px-10 md:py-4 border border-gold/50 hover:border-gold text-gold hover:bg-gold/5 transition-colors rounded-sm"
             >
               SEE PRICING
             </a>
@@ -79,7 +79,7 @@ export default function Hero() {
 
         {/* Trust signals */}
         <FadeUp delay={0.2}>
-          <p className="text-gold/70 text-lg tracking-wider mb-16">
+          <p className="text-gold/70 text-sm md:text-base tracking-wider mb-6 md:mb-8">
             Fast turnaround &nbsp;·&nbsp; SEO optimized &nbsp;·&nbsp; No contracts
           </p>
         </FadeUp>
@@ -90,7 +90,7 @@ export default function Hero() {
             {niches.map((niche) => (
               <span
                 key={niche}
-                className="text-base font-bold tracking-widest text-gold/80 border border-gold/30 px-8 py-4 rounded-sm"
+                className="text-base font-bold tracking-widest text-gold/80 border border-gold/30 px-8 py-4 md:px-5 md:py-2.5 rounded-sm"
               >
                 {niche}
               </span>

@@ -12,7 +12,7 @@ const links = [
 export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
-      <div className="max-w-[1400px] mx-auto px-8 h-28 flex items-center justify-between gap-6">
+      <div className="max-w-[1400px] mx-auto px-3 h-14 md:px-8 md:h-28 flex items-center justify-between gap-3 md:gap-6">
         {/* Logo */}
         <a href="#" className="flex-shrink-0 py-1">
           <Image
@@ -20,7 +20,7 @@ export default function Nav() {
             alt="Hoeper Studios"
             width={400}
             height={112}
-            className="h-24 w-auto object-contain"
+            className="h-10 w-auto object-contain md:h-24"
             priority
           />
         </a>
@@ -41,7 +41,7 @@ export default function Nav() {
         {/* CTA */}
         <a
           href="#demo"
-          className="flex-shrink-0 text-sm font-bold tracking-widest px-8 py-4 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
+          className="flex-shrink-0 text-xs font-bold tracking-wide px-3 py-2 md:text-sm md:tracking-widest md:px-8 md:py-4 bg-gold hover:bg-gold-light text-black transition-colors rounded-sm"
         >
           GET FREE DEMO
         </a>

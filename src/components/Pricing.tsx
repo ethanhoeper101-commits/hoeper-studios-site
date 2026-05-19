@@ -59,17 +59,17 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-40 md:py-52 px-8 bg-surface-dark">
+    <section id="pricing" className="py-40 md:py-28 px-4 md:px-8 bg-surface-dark">
       <div className="max-w-[1400px] mx-auto">
         <FadeUp>
           <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
             PRICING
           </p>
 
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white text-center mb-6">
+          <h2 className="text-6xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6">
             Simple, transparent packages
           </h2>
-          <p className="text-gray-muted text-center text-xl mb-32">
+          <p className="text-gray-muted text-center text-xl md:text-base mb-32 md:mb-12">
             No hidden fees. No long-term contracts. Cancel anytime.
           </p>
         </FadeUp>
@@ -93,22 +93,22 @@ export default function Pricing() {
                   </div>
                 )}
 
-                <div className="p-12 flex-1 flex flex-col">
-                  <h3 className="text-base font-bold tracking-widest text-gold mb-10">
+                <div className="p-6 md:p-7 flex-1 flex flex-col">
+                  <h3 className="text-base font-bold tracking-widest text-gold mb-10 md:mb-4">
                     {plan.name.toUpperCase()}
                   </h3>
 
-                  <div className="mb-3">
-                    <span className="text-7xl font-bold text-white">{plan.price}</span>
-                    <span className="text-gray-muted text-lg ml-3">{plan.billing}</span>
+                  <div className="mb-3 flex items-baseline gap-2 flex-wrap">
+                    <span className="text-5xl md:text-6xl font-bold text-white">{plan.price}</span>
+                    <span className="text-gray-muted text-lg whitespace-nowrap">{plan.billing}</span>
                   </div>
-                  <p className="text-gold/70 text-lg tracking-wide mb-12">
+                  <p className="text-gold/70 text-lg tracking-wide mb-12 md:mb-5">
                     + {plan.hosting}
                   </p>
 
-                  <ul className="flex flex-col gap-6 flex-1">
+                  <ul className="flex flex-col gap-6 md:gap-3 flex-1">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-4 text-xl text-white">
+                      <li key={feature} className="flex items-start gap-4 text-xl md:text-sm text-white">
                         <IconCheck size={24} className="text-gold flex-shrink-0 mt-1" />
                         <span>{feature}</span>
                       </li>
@@ -124,10 +124,10 @@ export default function Pricing() {
                   )}
                 </div>
 
-                <div className="px-12 pb-12">
+                <div className="px-6 pb-6 md:px-7 md:pb-7">
                   <a
                     href="#demo"
-                    className="block w-full text-center text-base font-bold tracking-widest py-5 rounded-sm transition-colors"
+                    className="block w-full text-center text-base font-bold tracking-widest py-5 md:py-3 rounded-sm transition-colors"
                     style={
                       plan.popular
                         ? { background: "#C9A84C", color: "#000" }
