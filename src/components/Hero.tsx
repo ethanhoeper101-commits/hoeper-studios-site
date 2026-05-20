@@ -43,10 +43,10 @@ export default function Hero() {
         {/* Headline */}
         <FadeUp delay={0.05}>
           <h1 className="mb-5 md:mb-7">
-            <span className="block text-3xl md:text-4xl font-medium text-white leading-snug mb-3 md:mb-4">
+            <span className="block text-xl md:text-4xl font-medium text-white leading-snug mb-3 md:mb-4">
               Your business deserves a website that
             </span>
-            <span className="block text-5xl md:text-7xl lg:text-8xl font-bold italic text-gold leading-tight">
+            <span className="block text-4xl md:text-7xl lg:text-8xl font-bold italic text-gold leading-tight">
               actually works.
             </span>
           </h1>
@@ -90,7 +90,7 @@ export default function Hero() {
             {niches.map((niche) => (
               <span
                 key={niche}
-                className="text-base font-bold tracking-widest text-gold/80 border border-gold/30 px-8 py-4 md:px-5 md:py-2.5 rounded-sm"
+                className="text-sm font-bold tracking-widest text-gold/80 border border-gold/30 px-4 py-2 md:px-5 md:py-2.5 rounded-sm"
               >
                 {niche}
               </span>

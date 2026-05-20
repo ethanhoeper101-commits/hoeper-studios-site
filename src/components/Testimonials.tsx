@@ -24,14 +24,14 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-40 md:py-52 px-8">
+    <section id="testimonials" className="py-16 md:py-52 px-4 md:px-8">
       <div className="max-w-[1400px] mx-auto">
         <FadeUp>
           <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
             TESTIMONIALS
           </p>
 
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white text-center mb-32">
+          <h2 className="text-3xl md:text-7xl lg:text-8xl font-bold text-white text-center mb-8 md:mb-32">
             What clients are saying
           </h2>
         </FadeUp>
@@ -39,20 +39,20 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
             <FadeUp key={t.name} delay={i * 0.1}>
-              <div className="bg-surface-card border border-border-subtle rounded-sm p-16 flex flex-col gap-9 h-full">
+              <div className="bg-surface-card border border-border-subtle rounded-sm p-6 md:p-16 flex flex-col gap-5 md:gap-9 h-full">
                 <div className="flex gap-2">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <IconStarFilled key={j} size={32} className="text-gold" />
                   ))}
                 </div>
 
-                <p className="text-white/90 italic text-xl leading-relaxed flex-1">
+                <p className="text-white/90 italic text-base md:text-xl leading-relaxed flex-1">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
                 <div>
-                  <p className="text-white font-semibold text-xl">{t.name}</p>
-                  <p className="text-gray-muted text-lg mt-1.5">{t.location}</p>
+                  <p className="text-white font-semibold text-base md:text-xl">{t.name}</p>
+                  <p className="text-gray-muted text-sm md:text-lg mt-1.5">{t.location}</p>
                 </div>
               </div>
             </FadeUp>

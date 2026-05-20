@@ -4,7 +4,7 @@ import { useState } from "react";
 import FadeUp from "./FadeUp";
 
 const inputClass =
-  "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-xl px-8 py-6 rounded-sm placeholder-white/30 transition-colors";
+  "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-base md:text-xl px-4 md:px-8 py-4 md:py-6 rounded-sm placeholder-white/30 transition-colors";
 
 const labelClass = "block text-sm font-bold tracking-widest text-gold/80 mb-4";
 
@@ -45,7 +45,7 @@ export default function DemoForm() {
   }
 
   return (
-    <section id="demo" className="relative py-40 md:py-52 px-8 overflow-hidden">
+    <section id="demo" className="relative py-16 md:py-52 px-4 md:px-8 overflow-hidden">
       <div
         className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1000px] rounded-full opacity-20"
         style={{
@@ -58,15 +58,15 @@ export default function DemoForm() {
           FREE DEMO
         </p>
 
-        <h2 className="text-6xl md:text-7xl font-bold text-white text-center mb-6">
+        <h2 className="text-3xl md:text-7xl font-bold text-white text-center mb-6">
           I&apos;ll build a free demo of your website.
         </h2>
-        <p className="text-gray-muted text-center text-xl mb-20">
+        <p className="text-gray-muted text-center text-base md:text-xl mb-8 md:mb-20">
           No cost. No commitment. You only pay if you love it.
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 md:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-10">
             <div>
               <label className={labelClass} htmlFor="businessName">BUSINESS NAME</label>
               <input
@@ -149,7 +149,7 @@ export default function DemoForm() {
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="w-full py-8 bg-gold hover:bg-gold-light text-black text-lg font-bold tracking-widest rounded-sm transition-colors disabled:opacity-60"
+            className="w-full py-5 md:py-8 bg-gold hover:bg-gold-light text-black text-base md:text-lg font-bold tracking-widest rounded-sm transition-colors disabled:opacity-60"
           >
             {status === "loading"
               ? "SENDING…"
