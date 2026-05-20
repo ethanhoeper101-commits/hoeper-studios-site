@@ -16,7 +16,7 @@ export default function Nav() {
         {/* Logo */}
         <a href="#" className="flex-shrink-0 py-1">
           <Image
-            src="/logo.png"
+            src="/logo-transparent.png"
             alt="Hoeper Studios"
             width={400}
             height={112}
