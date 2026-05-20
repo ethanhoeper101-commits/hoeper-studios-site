@@ -6,9 +6,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { businessName, businessType, phone, hadWebsite, goals } = body;
+    const { businessName, businessType, email, phone, hadWebsite, goals } = body;
 
-    if (!businessName || !businessType || !phone || !hadWebsite || !goals) {
+    if (!businessName || !businessType || !email || !phone || !hadWebsite || !goals) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
@@ -41,6 +41,10 @@ export async function POST(req: Request) {
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 12px 0; color: #9CA3AF; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Type of Business</td>
               <td style="padding: 12px 0; color: #fff; font-size: 14px;">${businessType}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #222;">
+              <td style="padding: 12px 0; color: #9CA3AF; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Email</td>
+              <td style="padding: 12px 0; color: #fff; font-size: 14px;">${email}</td>
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 12px 0; color: #9CA3AF; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Phone</td>
