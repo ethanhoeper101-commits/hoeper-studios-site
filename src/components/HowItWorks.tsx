@@ -40,7 +40,7 @@ export default function HowItWorks() {
             HOW IT WORKS
           </p>
 
-          <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-semibold text-white text-center mb-8 md:mb-28 leading-[1.02] tracking-tight">
+          <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-semibold text-white text-center mb-8 md:mb-28 leading-[1.12] pb-1 tracking-tight">
             From idea to live in
             <span className="text-gold-gradient italic"> days, not months</span>
           </h2>

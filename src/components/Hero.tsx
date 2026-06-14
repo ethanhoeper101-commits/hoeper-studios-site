@@ -92,7 +92,7 @@ export default function Hero() {
           <span className="block text-xl md:text-4xl font-medium text-white/90 leading-snug mb-2 md:mb-4 tracking-tight">
             Your business deserves a website that
           </span>
-          <span className="block font-display italic font-semibold text-5xl md:text-8xl lg:text-[8.5rem] leading-[0.95] text-gold-gradient">
+          <span className="block font-display italic font-semibold text-5xl md:text-8xl lg:text-[8.5rem] leading-[1.08] pb-2 md:pb-4 text-gold-gradient">
             actually works.
           </span>
         </motion.h1>

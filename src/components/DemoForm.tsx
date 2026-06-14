@@ -150,7 +150,7 @@ export default function DemoForm() {
           FREE DEMO
         </p>
 
-        <h2 className="font-display text-4xl md:text-7xl font-semibold text-white text-center mb-5 tracking-tight leading-[1.05]">
+        <h2 className="font-display text-4xl md:text-7xl font-semibold text-white text-center mb-5 tracking-tight leading-[1.15] pb-1">
           I&apos;ll build a free demo of
           <span className="text-gold-gradient italic"> your website.</span>
         </h2>
