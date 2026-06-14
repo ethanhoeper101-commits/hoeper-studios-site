@@ -23,6 +23,10 @@ const config: Config = {
         sans: ["var(--font-dm-sans)", "sans-serif"],
         display: ["var(--font-fraunces)", "Georgia", "serif"],
       },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "out-back": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      },
       keyframes: {
         pulse_dot: {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
@@ -53,6 +57,17 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)", opacity: "0.4" },
           "50%": { transform: "translateY(8px)", opacity: "1" },
         },
+        shimmerText: {
+          "0%": { backgroundPosition: "200% center" },
+          "100%": { backgroundPosition: "-200% center" },
+        },
+        spinSlow: {
+          to: { transform: "rotate(360deg)" },
+        },
+        scrollHint: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(180%)" },
+        },
       },
       animation: {
         pulse_dot: "pulse_dot 2s ease-in-out infinite",
@@ -61,8 +76,12 @@ const config: Config = {
         "drift-slower": "drift 28s ease-in-out infinite",
         "glow-pulse": "glowPulse 9s ease-in-out infinite",
         marquee: "marquee 32s linear infinite",
+        "marquee-fast": "marquee 24s linear infinite",
         "gradient-move": "gradientMove 8s ease infinite",
         "bounce-down": "bounceDown 1.8s ease-in-out infinite",
+        "shimmer-text": "shimmerText 6s linear infinite",
+        "spin-slow": "spinSlow 22s linear infinite",
+        "scroll-hint": "scrollHint 2.2s ease-in-out infinite",
       },
     },
   },

@@ -1,5 +1,6 @@
 import { IconCheck } from "@tabler/icons-react";
 import FadeUp from "./FadeUp";
+import SpotlightCard from "./SpotlightCard";
 
 const plans = [
   {
@@ -7,6 +8,7 @@ const plans = [
     price: "$500",
     billing: "one time",
     hosting: "$50/mo hosting",
+    tagline: "Everything a local business needs to look the part.",
     badge: null,
     popular: false,
     features: [
@@ -23,6 +25,7 @@ const plans = [
     price: "$1,000",
     billing: "one time",
     hosting: "$50/mo hosting",
+    tagline: "The sweet spot — built to turn visitors into booked jobs.",
     badge: "MOST POPULAR",
     popular: true,
     features: [
@@ -39,6 +42,7 @@ const plans = [
     price: "$1,500",
     billing: "one time",
     hosting: "$100/mo hosting",
+    tagline: "A full growth engine that works while you're on the job.",
     badge: null,
     popular: false,
     freeHostingPromo: "3 months free hosting — then $100/mo",
@@ -70,11 +74,8 @@ export default function Pricing() {
       />
 
       <div className="relative max-w-[1400px] mx-auto">
-        <FadeUp>
-          <p className="text-sm font-bold tracking-[0.3em] text-gold text-center mb-6">
-            PRICING
-          </p>
-
+        <FadeUp className="text-center">
+          <span className="eyebrow center mb-6">PRICING</span>
           <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-white text-center mb-4 md:mb-6 tracking-tight">
             Simple, <span className="text-gold-gradient italic">transparent</span> packages
           </h2>
@@ -85,20 +86,24 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {plans.map((plan, i) => (
-            <FadeUp key={plan.name} delay={i * 0.1} className="flex">
-              <div
-                className={`card-lift group relative w-full flex flex-col rounded-sm bg-surface-card overflow-hidden ${
+            <FadeUp key={plan.name} delay={i * 0.12} className="flex">
+              <SpotlightCard
+                className={`group relative w-full flex flex-col rounded-sm bg-surface-card overflow-hidden ${
                   plan.popular ? "md:-translate-y-3" : ""
                 }`}
-                style={{
-                  border: plan.popular
-                    ? "1px solid rgba(201,168,76,0.7)"
-                    : "1px solid rgba(255,255,255,0.08)",
-                  boxShadow: plan.popular
-                    ? "0 30px 70px -30px rgba(201,168,76,0.4)"
-                    : undefined,
-                }}
               >
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-sm"
+                  style={{
+                    border: plan.popular
+                      ? "1px solid rgba(201,168,76,0.7)"
+                      : "1px solid rgba(255,255,255,0.08)",
+                    boxShadow: plan.popular
+                      ? "0 30px 70px -30px rgba(201,168,76,0.4)"
+                      : undefined,
+                  }}
+                />
+
                 {/* gold top accent on popular */}
                 {plan.popular && (
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
@@ -112,10 +117,13 @@ export default function Pricing() {
                   </div>
                 )}
 
-                <div className="p-6 md:p-8 flex-1 flex flex-col">
-                  <h3 className="text-sm font-bold tracking-[0.25em] text-gold mb-4">
+                <div className="relative p-6 md:p-8 flex-1 flex flex-col">
+                  <h3 className="text-sm font-bold tracking-[0.25em] text-gold mb-2">
                     {plan.name.toUpperCase()}
                   </h3>
+                  <p className="text-gray-muted text-sm mb-6 min-h-[2.5rem] leading-relaxed">
+                    {plan.tagline}
+                  </p>
 
                   <div className="mb-3 flex items-baseline gap-2 flex-wrap">
                     <span className="font-display text-5xl md:text-6xl font-semibold text-white">
@@ -137,7 +145,7 @@ export default function Pricing() {
                         key={feature}
                         className="flex items-start gap-3 text-sm text-white/90"
                       >
-                        <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold/15">
+                        <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold/15 transition-colors group-hover:bg-gold/25">
                           <IconCheck size={14} className="text-gold" stroke={3} />
                         </span>
                         <span>{feature}</span>
@@ -161,22 +169,32 @@ export default function Pricing() {
                   )}
                 </div>
 
-                <div className="px-6 pb-6 md:px-8 md:pb-8">
+                <div className="relative px-6 pb-6 md:px-8 md:pb-8">
                   <a
                     href="#demo"
-                    className={`block w-full text-center text-sm font-bold tracking-widest py-4 rounded-sm transition-colors ${
+                    className={`block w-full text-center text-sm font-bold tracking-widest py-4 rounded-sm transition-colors btn-press ${
                       plan.popular
                         ? "btn-gold bg-gold hover:bg-gold-light text-black"
-                        : "border border-gold/40 hover:border-gold hover:bg-gold/5 text-gold"
+                        : "btn-ghost border border-gold/40 hover:border-gold hover:bg-gold/5 text-gold"
                     }`}
                   >
                     GET STARTED
                   </a>
                 </div>
-              </div>
+              </SpotlightCard>
             </FadeUp>
           ))}
         </div>
+
+        <FadeUp delay={0.1}>
+          <p className="mt-10 md:mt-14 text-center text-sm text-gray-muted">
+            Not sure which fits?{" "}
+            <a href="#demo" className="text-gold gold-underline hover:text-gold-light">
+              Get a free demo
+            </a>{" "}
+            and I&apos;ll recommend the right one — no pressure.
+          </p>
+        </FadeUp>
       </div>
     </section>
   );

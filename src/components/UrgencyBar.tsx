@@ -1,31 +1,54 @@
-import FadeUp from "./FadeUp";
+import {
+  IconBolt,
+  IconShieldCheck,
+  IconTrendingUp,
+  IconClockHour4,
+  IconMapPin,
+  IconDeviceMobile,
+} from "@tabler/icons-react";
+
+const items = [
+  { icon: IconBolt, label: "Live in days, not months" },
+  { icon: IconShieldCheck, label: "No contracts, cancel anytime" },
+  { icon: IconTrendingUp, label: "Built to turn clicks into calls" },
+  { icon: IconClockHour4, label: "Replies within 24 hours" },
+  { icon: IconMapPin, label: "Based in Idaho, made for Idaho" },
+  { icon: IconDeviceMobile, label: "Flawless on every phone" },
+];
+
+function Track() {
+  return (
+    <div className="flex shrink-0 items-center gap-10 md:gap-16 pr-10 md:pr-16">
+      {items.map(({ icon: Icon, label }) => (
+        <div key={label} className="flex shrink-0 items-center gap-3">
+          <Icon size={18} className="text-gold" stroke={1.6} />
+          <span className="whitespace-nowrap text-sm md:text-base tracking-wide text-white/75">
+            {label}
+          </span>
+          <span className="ml-7 md:ml-12 text-gold/30">✦</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function UrgencyBar() {
   return (
-    <FadeUp>
-      <div className="relative w-full bg-surface-dark border-y border-gold/10 py-6 overflow-hidden">
-        {/* subtle sweeping gold tint */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-50"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.06) 50%, transparent 100%)",
-          }}
-        />
-        <div className="relative max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-5">
-          <span className="relative flex h-3.5 w-3.5 flex-shrink-0">
-            <span className="animate-pulse_dot absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-gold" />
-          </span>
+    <div className="relative w-full overflow-hidden border-y border-gold/10 bg-surface-dark py-5">
+      {/* edge fade masks */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-surface-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-surface-dark to-transparent" />
 
-          <p className="text-sm md:text-lg tracking-wide text-center">
-            <span className="text-gold font-semibold">
-              Currently taking 3 new clients this month
-            </span>
-            <span className="text-gray-muted"> — spots fill fast</span>
-          </p>
-        </div>
+      <div className="flex w-max animate-marquee will-change-transform" aria-hidden>
+        <Track />
+        <Track />
       </div>
-    </FadeUp>
+
+      {/* Accessible static copy for screen readers */}
+      <p className="sr-only">
+        Live in days not months. No contracts, cancel anytime. Built to turn clicks into
+        calls. Replies within 24 hours. Based in Idaho. Flawless on every phone.
+      </p>
+    </div>
   );
 }

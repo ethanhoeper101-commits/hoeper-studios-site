@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ const fraunces = Fraunces({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#000000",
 };
 
 export const metadata: Metadata = {
@@ -36,6 +38,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${fraunces.variable} font-sans antialiased bg-black text-white`}
       >
+        <ScrollProgress />
         <div className="grain-overlay" aria-hidden />
         {children}
       </body>
