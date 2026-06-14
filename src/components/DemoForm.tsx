@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import FadeUp from "./FadeUp";
+import CustomSelect, { SelectOption } from "./CustomSelect";
 
 const inputClass =
   "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-base md:text-xl px-4 md:px-8 py-4 md:py-6 rounded-sm placeholder-white/30 transition-colors";
@@ -12,6 +13,20 @@ const inputErrorClass =
 const labelClass = "block text-sm font-bold tracking-widest text-gold/80 mb-4";
 
 const errorMsgClass = "mt-2 text-sm text-red-400";
+
+const websiteOptions: SelectOption[] = [
+  { value: "yes-happy", label: "Yes, and I liked it" },
+  { value: "yes-unhappy", label: "Yes, but it didn't work well" },
+  { value: "no", label: "No, this would be my first" },
+];
+
+const goalOptions: SelectOption[] = [
+  { value: "leads", label: "Generate more leads and calls" },
+  { value: "credibility", label: "Look professional and build trust" },
+  { value: "bookings", label: "Accept online bookings" },
+  { value: "reviews", label: "Get more Google reviews" },
+  { value: "all", label: "All of the above" },
+];
 
 type FormData = {
   businessName: string;
@@ -110,6 +125,13 @@ export default function DemoForm() {
     }
   }
 
+  function handleSelect(name: string, value: string) {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormData]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  }
+
   function ic(name: keyof FormData) {
     return errors[name] ? inputErrorClass : inputClass;
   }
@@ -196,37 +218,29 @@ export default function DemoForm() {
 
           <div>
             <label className={labelClass} htmlFor="hadWebsite">HAD A WEBSITE BEFORE?</label>
-            <select
+            <CustomSelect
               id="hadWebsite"
               name="hadWebsite"
               value={formData.hadWebsite}
-              onChange={handleChange}
-              className={ic("hadWebsite") + " appearance-none cursor-pointer"}
-            >
-              <option value="" disabled>Select one…</option>
-              <option value="yes-happy">Yes, and I liked it</option>
-              <option value="yes-unhappy">Yes, but it didn&apos;t work well</option>
-              <option value="no">No, this would be my first</option>
-            </select>
+              options={websiteOptions}
+              placeholder="Select one…"
+              error={!!errors.hadWebsite}
+              onChange={handleSelect}
+            />
             {errors.hadWebsite && <p className={errorMsgClass}>{errors.hadWebsite}</p>}
           </div>
 
           <div>
             <label className={labelClass} htmlFor="goals">WHAT DO YOU WANT YOUR WEBSITE TO DO?</label>
-            <select
+            <CustomSelect
               id="goals"
               name="goals"
               value={formData.goals}
-              onChange={handleChange}
-              className={ic("goals") + " appearance-none cursor-pointer"}
-            >
-              <option value="" disabled>Select your main goal…</option>
-              <option value="leads">Generate more leads and calls</option>
-              <option value="credibility">Look professional and build trust</option>
-              <option value="bookings">Accept online bookings</option>
-              <option value="reviews">Get more Google reviews</option>
-              <option value="all">All of the above</option>
-            </select>
+              options={goalOptions}
+              placeholder="Select your main goal…"
+              error={!!errors.goals}
+              onChange={handleSelect}
+            />
             {errors.goals && <p className={errorMsgClass}>{errors.goals}</p>}
           </div>
 
