@@ -28,7 +28,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-16 md:py-52 px-4 md:px-8 overflow-hidden">
+    <section id="how-it-works" className="relative py-16 md:py-28 px-4 md:px-8 overflow-hidden">
       {/* ambient glow */}
       <div
         className="pointer-events-none absolute top-0 right-0 w-[700px] h-[700px] rounded-full opacity-[0.08] animate-drift-slow"
@@ -42,7 +42,7 @@ export default function HowItWorks() {
             From idea to live in
             <span className="text-gold-gradient italic"> days, not months</span>
           </h2>
-          <p className="text-gray-muted text-base md:text-lg max-w-2xl mx-auto mb-12 md:mb-24">
+          <p className="text-gray-muted text-base md:text-lg max-w-2xl mx-auto mb-10 md:mb-16">
             Three simple steps. Zero risk. You don&apos;t pay a cent until you&apos;ve seen
             exactly what you&apos;re getting.
           </p>
@@ -84,7 +84,7 @@ export default function HowItWorks() {
           })}
         </div>
 
-        <FadeUp delay={0.1} className="mt-12 md:mt-20 flex justify-center">
+        <FadeUp delay={0.1} className="mt-10 md:mt-14 flex justify-center">
           <a
             href="#demo"
             className="btn-ghost group inline-flex items-center gap-3 rounded-sm border border-gold/40 px-9 py-4 text-sm font-bold tracking-widest text-gold hover:border-gold hover:bg-gold/5"

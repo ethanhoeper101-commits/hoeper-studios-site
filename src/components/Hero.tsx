@@ -13,8 +13,8 @@ const niches = [
   "ROOFING",
 ];
 
-// Rotating promise words in the headline
-const rotators = ["actually works.", "books more jobs.", "earns trust.", "rings the phone."];
+// Rotating promise words in the headline — kept short so they never wrap
+const rotators = ["works.", "wins jobs.", "earns trust.", "gets calls."];
 
 const container: Variants = {
   hidden: {},
@@ -46,7 +46,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] md:min-h-dvh flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0"
+      className="relative min-h-[100svh] md:min-h-[90vh] flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-24 md:pb-16"
     >
       {/* ── Atmospheric gradient-mesh background ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -108,7 +108,7 @@ export default function Hero() {
           <span className="block text-xl md:text-4xl font-medium text-white/90 leading-snug mb-2 md:mb-4 tracking-tight">
             Your business deserves a website that
           </span>
-          <span className="relative block h-[3.6rem] md:h-[8.5rem] lg:h-[9.5rem]">
+          <span className="relative block h-[3.8rem] md:h-[7.5rem] lg:h-[8.5rem]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={rotators[index]}
@@ -116,7 +116,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -28, filter: "blur(8px)" }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-x-0 block font-display italic font-semibold text-5xl md:text-8xl lg:text-[8.5rem] leading-[1.08] pb-2 md:pb-4 text-gold-shimmer"
+                className="absolute inset-x-0 block whitespace-nowrap font-display italic font-semibold text-5xl md:text-8xl lg:text-[7.5rem] leading-[1.06] pb-2 md:pb-3 text-gold-shimmer"
               >
                 {rotators[index]}
               </motion.span>

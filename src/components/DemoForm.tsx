@@ -145,7 +145,7 @@ export default function DemoForm() {
   }
 
   return (
-    <section id="demo" className="relative py-16 md:py-52 px-4 md:px-8 overflow-hidden">
+    <section id="demo" className="relative py-16 md:py-28 px-4 md:px-8 overflow-hidden">
       <div
         className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1000px] rounded-full opacity-20"
         style={{
@@ -160,7 +160,7 @@ export default function DemoForm() {
             I&apos;ll build a free demo of
             <span className="text-gold-gradient italic"> your website.</span>
           </h2>
-          <p className="text-gray-muted text-center text-base md:text-xl mb-10 md:mb-14">
+          <p className="text-gray-muted text-center text-base md:text-xl mb-10 md:mb-12">
             No cost. No commitment. You only pay if you love it.
           </p>
         </div>

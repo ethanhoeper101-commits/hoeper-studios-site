@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative border-t border-gold/10 bg-black pt-16 md:pt-28 pb-32 md:pb-12 px-6 md:px-8 overflow-hidden"
+      className="relative border-t border-gold/10 bg-black pt-16 md:pt-24 pb-32 md:pb-14 px-6 md:px-8 overflow-hidden"
     >
       {/* faded wordmark */}
       <p
@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="relative max-w-[1400px] mx-auto">
         <FadeUp>
           {/* Big closing CTA */}
-          <div className="mb-14 md:mb-20 text-center">
+          <div className="mb-12 md:mb-16 text-center">
             <h2 className="font-display text-3xl md:text-6xl font-semibold text-white leading-[1.12] tracking-tight">
               Ready to stop losing jobs to a{" "}
               <span className="text-gold-gradient italic">better-looking</span> competitor?
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </FadeUp>
 
-        <div className="hairline-gold mb-12 md:mb-16" />
+        <div className="hairline-gold mb-10 md:mb-14" />
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {/* Brand */}

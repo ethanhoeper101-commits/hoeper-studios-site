@@ -65,7 +65,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative py-16 md:py-32 px-4 md:px-8 bg-surface-dark overflow-hidden"
+      className="relative py-16 md:py-24 px-4 md:px-8 bg-surface-dark overflow-hidden"
     >
       {/* ambient glow */}
       <div

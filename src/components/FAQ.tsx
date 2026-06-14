@@ -36,7 +36,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-16 md:py-40 px-4 md:px-8 overflow-hidden">
+    <section id="faq" className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
       <div
         className="pointer-events-none absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.06] animate-drift-slow"
         style={{ background: "radial-gradient(circle at center, #C9A84C 0%, transparent 70%)" }}
@@ -48,7 +48,7 @@ export default function FAQ() {
           <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-white text-center mb-4 md:mb-6 tracking-tight">
             Everything you&apos;re <span className="text-gold-gradient italic">wondering</span>
           </h2>
-          <p className="text-gray-muted text-center text-base md:text-lg mb-12 md:mb-16">
+          <p className="text-gray-muted text-center text-base md:text-lg mb-10 md:mb-14">
             Straight answers. No fine print.
           </p>
         </FadeUp>
@@ -108,7 +108,7 @@ export default function FAQ() {
         </div>
 
         <FadeUp delay={0.1}>
-          <div className="mt-12 md:mt-16 text-center">
+          <div className="mt-10 md:mt-14 text-center">
             <p className="text-gray-muted mb-5">Still have a question?</p>
             <a
               href="#demo"
