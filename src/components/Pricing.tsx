@@ -59,17 +59,26 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-16 md:py-28 px-4 md:px-8 bg-surface-dark">
-      <div className="max-w-[1400px] mx-auto">
+    <section
+      id="pricing"
+      className="relative py-16 md:py-32 px-4 md:px-8 bg-surface-dark overflow-hidden"
+    >
+      {/* ambient glow */}
+      <div
+        className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] rounded-full opacity-[0.07] animate-glow-pulse"
+        style={{ background: "radial-gradient(ellipse at center, #C9A84C 0%, transparent 65%)" }}
+      />
+
+      <div className="relative max-w-[1400px] mx-auto">
         <FadeUp>
-          <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
+          <p className="text-sm font-bold tracking-[0.3em] text-gold text-center mb-6">
             PRICING
           </p>
 
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 md:mb-6">
-            Simple, transparent packages
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-white text-center mb-4 md:mb-6 tracking-tight">
+            Simple, <span className="text-gold-gradient italic">transparent</span> packages
           </h2>
-          <p className="text-gray-muted text-center text-base md:text-base mb-8 md:mb-12">
+          <p className="text-gray-muted text-center text-base md:text-lg mb-10 md:mb-16">
             No hidden fees. No long-term contracts. Cancel anytime.
           </p>
         </FadeUp>
@@ -78,61 +87,88 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <FadeUp key={plan.name} delay={i * 0.1} className="flex">
               <div
-                className="flex flex-col rounded-sm bg-surface-card relative w-full"
+                className={`card-lift group relative w-full flex flex-col rounded-sm bg-surface-card overflow-hidden ${
+                  plan.popular ? "md:-translate-y-3" : ""
+                }`}
                 style={{
                   border: plan.popular
                     ? "1px solid rgba(201,168,76,0.7)"
                     : "1px solid rgba(255,255,255,0.08)",
+                  boxShadow: plan.popular
+                    ? "0 30px 70px -30px rgba(201,168,76,0.4)"
+                    : undefined,
                 }}
               >
+                {/* gold top accent on popular */}
+                {plan.popular && (
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+                )}
+
                 {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-gold text-black text-xs font-bold tracking-widest px-4 py-1.5 rounded-sm">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
+                    <span className="bg-gold text-black text-xs font-bold tracking-widest px-4 py-1.5 rounded-sm shadow-[0_8px_24px_-8px_rgba(201,168,76,0.7)]">
                       {plan.badge}
                     </span>
                   </div>
                 )}
 
-                <div className="p-6 md:p-7 flex-1 flex flex-col">
-                  <h3 className="text-base font-bold tracking-widest text-gold mb-3 md:mb-4">
+                <div className="p-6 md:p-8 flex-1 flex flex-col">
+                  <h3 className="text-sm font-bold tracking-[0.25em] text-gold mb-4">
                     {plan.name.toUpperCase()}
                   </h3>
 
                   <div className="mb-3 flex items-baseline gap-2 flex-wrap">
-                    <span className="text-5xl md:text-6xl font-bold text-white">{plan.price}</span>
-                    <span className="text-gray-muted text-lg whitespace-nowrap">{plan.billing}</span>
+                    <span className="font-display text-5xl md:text-6xl font-semibold text-white">
+                      {plan.price}
+                    </span>
+                    <span className="text-gray-muted text-lg whitespace-nowrap">
+                      {plan.billing}
+                    </span>
                   </div>
-                  <p className="text-gold/70 text-base tracking-wide mb-4 md:mb-5">
+                  <p className="text-gold/70 text-base tracking-wide mb-5 md:mb-6">
                     + {plan.hosting}
                   </p>
 
-                  <ul className="flex flex-col gap-3 md:gap-3 flex-1">
+                  <div className="h-px w-full bg-gradient-to-r from-gold/20 via-gold/5 to-transparent mb-5 md:mb-6" />
+
+                  <ul className="flex flex-col gap-3 flex-1">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm md:text-sm text-white">
-                        <IconCheck size={24} className="text-gold flex-shrink-0 mt-1" />
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm text-white/90"
+                      >
+                        <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold/15">
+                          <IconCheck size={14} className="text-gold" stroke={3} />
+                        </span>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
 
                   {"freeHostingPromo" in plan && plan.freeHostingPromo && (
-                    <div className="mt-8 flex items-center gap-3 rounded-sm px-5 py-4"
-                      style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.35)" }}>
+                    <div
+                      className="mt-8 flex items-center gap-3 rounded-sm px-5 py-4"
+                      style={{
+                        background: "rgba(201,168,76,0.12)",
+                        border: "1px solid rgba(201,168,76,0.35)",
+                      }}
+                    >
                       <span className="text-gold text-2xl leading-none">★</span>
-                      <span className="text-gold font-bold text-lg tracking-wide">{plan.freeHostingPromo}</span>
+                      <span className="text-gold font-bold text-lg tracking-wide">
+                        {plan.freeHostingPromo}
+                      </span>
                     </div>
                   )}
                 </div>
 
-                <div className="px-6 pb-6 md:px-7 md:pb-7">
+                <div className="px-6 pb-6 md:px-8 md:pb-8">
                   <a
                     href="#demo"
-                    className="block w-full text-center text-base font-bold tracking-widest py-5 md:py-3 rounded-sm transition-colors"
-                    style={
+                    className={`block w-full text-center text-sm font-bold tracking-widest py-4 rounded-sm transition-colors ${
                       plan.popular
-                        ? { background: "#C9A84C", color: "#000" }
-                        : { border: "1px solid rgba(201,168,76,0.4)", color: "#C9A84C" }
-                    }
+                        ? "btn-gold bg-gold hover:bg-gold-light text-black"
+                        : "border border-gold/40 hover:border-gold hover:bg-gold/5 text-gold"
+                    }`}
                   >
                     GET STARTED
                   </a>

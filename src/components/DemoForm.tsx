@@ -146,18 +146,23 @@ export default function DemoForm() {
       />
 
       <FadeUp className="relative z-10 max-w-[1000px] mx-auto">
-        <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
+        <p className="text-sm font-bold tracking-[0.3em] text-gold text-center mb-6">
           FREE DEMO
         </p>
 
-        <h2 className="text-3xl md:text-7xl font-bold text-white text-center mb-6">
-          I&apos;ll build a free demo of your website.
+        <h2 className="font-display text-4xl md:text-7xl font-semibold text-white text-center mb-5 tracking-tight leading-[1.05]">
+          I&apos;ll build a free demo of
+          <span className="text-gold-gradient italic"> your website.</span>
         </h2>
-        <p className="text-gray-muted text-center text-base md:text-xl mb-8 md:mb-20">
+        <p className="text-gray-muted text-center text-base md:text-xl mb-10 md:mb-14">
           No cost. No commitment. You only pay if you love it.
         </p>
 
-        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5 md:gap-10">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="flex flex-col gap-5 md:gap-8 rounded-sm border border-border-gold bg-surface-card/50 backdrop-blur-sm p-6 md:p-12 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-10">
             <div>
               <label className={labelClass} htmlFor="businessName">BUSINESS NAME</label>
@@ -247,7 +252,7 @@ export default function DemoForm() {
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="w-full py-5 md:py-8 bg-gold hover:bg-gold-light text-black text-base md:text-lg font-bold tracking-widest rounded-sm transition-colors disabled:opacity-60"
+            className="btn-gold w-full py-5 md:py-6 bg-gold hover:bg-gold-light text-black text-base md:text-lg font-bold tracking-widest rounded-sm transition-colors disabled:opacity-60 shadow-[0_10px_40px_-12px_rgba(201,168,76,0.5)]"
           >
             {status === "loading"
               ? "SENDING…"

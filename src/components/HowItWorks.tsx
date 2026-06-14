@@ -27,30 +27,48 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 md:py-52 px-4 md:px-8">
-      <div className="max-w-[1400px] mx-auto">
+    <section id="how-it-works" className="relative py-16 md:py-52 px-4 md:px-8 overflow-hidden">
+      {/* ambient glow */}
+      <div
+        className="pointer-events-none absolute top-0 right-0 w-[700px] h-[700px] rounded-full opacity-[0.08] animate-drift-slow"
+        style={{ background: "radial-gradient(circle at center, #C9A84C 0%, transparent 70%)" }}
+      />
+
+      <div className="relative max-w-[1400px] mx-auto">
         <FadeUp>
-          <p className="text-base font-bold tracking-widest text-gold text-center mb-8">
+          <p className="text-sm font-bold tracking-[0.3em] text-gold text-center mb-6">
             HOW IT WORKS
           </p>
 
-          <h2 className="text-3xl md:text-7xl lg:text-8xl font-bold text-white text-center mb-8 md:mb-32">
-            From idea to live in days, not months
+          <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-semibold text-white text-center mb-8 md:mb-28 leading-[1.02] tracking-tight">
+            From idea to live in
+            <span className="text-gold-gradient italic"> days, not months</span>
           </h2>
         </FadeUp>
 
-        <div className="border border-border-gold rounded-sm grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border-gold">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <FadeUp key={step.number} delay={i * 0.1}>
-                <div className="p-6 md:p-16 lg:p-20 flex flex-col gap-5 md:gap-8">
-                  <p className="text-base font-bold tracking-widest text-gold">
+              <FadeUp key={step.number} delay={i * 0.1} className="flex">
+                <div className="card-lift group relative w-full overflow-hidden rounded-sm border border-border-gold bg-surface-card/60 p-6 md:p-12 lg:p-14 flex flex-col gap-5 md:gap-7">
+                  {/* ghost numeral */}
+                  <span className="pointer-events-none absolute -top-6 right-2 md:right-4 font-display font-black italic text-7xl md:text-9xl leading-none text-gold/[0.06] select-none">
+                    {step.number}
+                  </span>
+
+                  <p className="relative text-xs font-bold tracking-[0.3em] text-gold">
                     STEP {step.number}
                   </p>
-                  <Icon size={64} className="text-gold" stroke={1.5} />
-                  <h3 className="text-2xl md:text-4xl font-bold text-white">{step.title}</h3>
-                  <p className="text-base md:text-xl text-gray-muted leading-relaxed">
+
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-sm border border-gold/30 bg-gold/[0.06] transition-colors group-hover:border-gold/60">
+                    <Icon size={36} className="text-gold" stroke={1.5} />
+                  </div>
+
+                  <h3 className="relative font-display text-2xl md:text-4xl font-semibold text-white">
+                    {step.title}
+                  </h3>
+                  <p className="relative text-base md:text-xl text-gray-muted leading-relaxed">
                     {step.description}
                   </p>
                 </div>

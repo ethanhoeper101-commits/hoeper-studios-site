@@ -16,9 +16,25 @@ html {
 }
 
 body {
-  background: #000000;
+  /* Deep, slightly-warm black with a subtle vignette for depth */
+  background-color: #000000;
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, rgba(201, 168, 76, 0.08) 0%, transparent 55%),
+    radial-gradient(100% 100% at 50% 100%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
+  background-attachment: fixed;
   color: #ffffff;
   overflow-x: hidden;
+}
+
+/* Film-grain texture across the whole site for tactile depth */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Gold underline utility */
@@ -35,4 +51,68 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ── Gold button with a shimmer sweep on hover ── */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  transform: translateX(-180%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-gold:hover::after {
+  animation: sheen 0.85s ease;
+}
+@keyframes sheen {
+  to {
+    transform: translateX(320%) skewX(-20deg);
+  }
+}
+
+/* ── Card lift + gold glow on hover ── */
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 168, 76, 0.55) !important;
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.9),
+    0 0 40px -12px rgba(201, 168, 76, 0.25);
+}
+
+/* Soft gradient text for accents */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E2C97E 0%, #C9A84C 50%, #8A6E2F 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
