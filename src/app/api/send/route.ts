@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     };
 
     await resend.emails.send({
-      from: "Hoeper Studios Demo Form <demo@hoeperstudio.com>",
+      from: "Hoeper Studios Demo Form <notifications@hoeperstudio.com>",
       to: "ethan@hoeperstudio.com",
       subject: `New Demo Request — ${businessName}`,
       html: `

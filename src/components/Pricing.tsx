@@ -20,7 +20,7 @@ const plans = [
   },
   {
     name: "Growth",
-    price: "$750",
+    price: "$1,000",
     billing: "one time",
     hosting: "$50/mo hosting",
     badge: "MOST POPULAR",
@@ -36,7 +36,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$1,000",
+    price: "$1,500",
     billing: "one time",
     hosting: "$100/mo hosting",
     badge: null,
