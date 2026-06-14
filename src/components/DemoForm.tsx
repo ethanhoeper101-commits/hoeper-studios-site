@@ -7,12 +7,18 @@ import FadeUp from "./FadeUp";
 import CustomSelect, { SelectOption } from "./CustomSelect";
 
 const inputClass =
-  "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-base md:text-xl px-4 md:px-8 py-4 md:py-6 rounded-sm placeholder-white/30 transition-colors";
+  "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-base md:text-lg px-4 md:px-6 py-4 md:py-5 rounded-sm placeholder-white/30 transition-colors";
 
 const inputErrorClass =
-  "w-full bg-black/40 border border-red-500/60 focus:border-red-500/80 focus:outline-none text-white text-base md:text-xl px-4 md:px-8 py-4 md:py-6 rounded-sm placeholder-white/30 transition-colors";
+  "w-full bg-black/40 border border-red-500/60 focus:border-red-500/80 focus:outline-none text-white text-base md:text-lg px-4 md:px-6 py-4 md:py-5 rounded-sm placeholder-white/30 transition-colors";
 
-const labelClass = "block text-sm font-bold tracking-widest text-gold/80 mb-4";
+const textareaClass =
+  "w-full bg-black/40 border border-white/10 focus:border-gold/60 focus:outline-none text-white text-base md:text-lg px-4 md:px-6 py-4 rounded-sm placeholder-white/30 transition-colors resize-y min-h-[120px]";
+
+const labelClass = "block text-sm font-bold tracking-widest text-gold/80 mb-3";
+
+const sectionLabelClass =
+  "flex items-center gap-3 text-xs font-bold tracking-[0.3em] text-gold/70";
 
 const errorMsgClass = "mt-2 text-sm text-red-400";
 
@@ -37,25 +43,37 @@ const reassurances = [
 ];
 
 type FormData = {
+  yourName: string;
   businessName: string;
   businessType: string;
   email: string;
   phone: string;
+  city: string;
+  currentWebsite: string;
   hadWebsite: string;
   goals: string;
+  message: string;
 };
 
 const emptyForm: FormData = {
+  yourName: "",
   businessName: "",
   businessType: "",
   email: "",
   phone: "",
+  city: "",
+  currentWebsite: "",
   hadWebsite: "",
   goals: "",
+  message: "",
 };
 
 function validate(data: FormData): Partial<Record<keyof FormData, string>> {
   const errors: Partial<Record<keyof FormData, string>> = {};
+
+  if (!data.yourName.trim()) {
+    errors.yourName = "Your name is required.";
+  }
 
   if (!data.businessName.trim()) {
     errors.businessName = "Business name is required.";
@@ -80,6 +98,10 @@ function validate(data: FormData): Partial<Record<keyof FormData, string>> {
     errors.phone = "Enter a 10-digit US phone number.";
   }
 
+  if (!data.city.trim()) {
+    errors.city = "City or service area is required.";
+  }
+
   if (!data.hadWebsite) {
     errors.hadWebsite = "Please select an option.";
   }
@@ -97,11 +119,10 @@ export default function DemoForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear the error for this field as the user edits it
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -112,6 +133,9 @@ export default function DemoForm() {
     const newErrors = validate(formData);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      // Focus the first field with an error for accessibility
+      const firstError = Object.keys(newErrors)[0];
+      document.getElementById(firstError)?.focus();
       return;
     }
     setErrors({});
@@ -161,7 +185,8 @@ export default function DemoForm() {
             <span className="text-gold-gradient italic"> your website.</span>
           </h2>
           <p className="text-gray-muted text-center text-base md:text-xl mb-10 md:mb-12">
-            No cost. No commitment. You only pay if you love it.
+            Tell me a little about you and your business. The more I know, the better your
+            demo — and the better our first call.
           </p>
         </div>
 
@@ -183,11 +208,11 @@ export default function DemoForm() {
                 <IconCheck size={42} className="text-gold" stroke={2.5} />
               </motion.span>
               <h3 className="font-display text-3xl md:text-5xl font-semibold text-white">
-                Request received.
+                Got it — thank you.
               </h3>
               <p className="max-w-md text-base md:text-lg text-gray-muted">
-                Thanks for reaching out. I&apos;ll review your details and be in touch within
-                24 hours to start building your free demo.
+                I&apos;ve received your details and I&apos;ll be in touch within 24 hours to
+                talk through your demo. Talk soon.
               </p>
             </motion.div>
           ) : (
@@ -197,102 +222,193 @@ export default function DemoForm() {
               noValidate
               initial={{ opacity: 1 }}
               exit={{ opacity: 0, y: -10 }}
-              className="flex flex-col gap-5 md:gap-8 rounded-sm border border-border-gold bg-surface-card/50 backdrop-blur-sm p-6 md:p-12 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]"
+              className="flex flex-col gap-7 md:gap-9 rounded-sm border border-border-gold bg-surface-card/50 backdrop-blur-sm p-6 md:p-12 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-10">
-                <div>
-                  <label className={labelClass} htmlFor="businessName">BUSINESS NAME</label>
-                  <input
-                    id="businessName"
-                    name="businessName"
-                    type="text"
-                    autoComplete="organization"
-                    aria-invalid={!!errors.businessName}
-                    placeholder="Acme Tree Service"
-                    value={formData.businessName}
-                    onChange={handleChange}
-                    className={ic("businessName")}
-                  />
-                  {errors.businessName && <p role="alert" className={errorMsgClass}>{errors.businessName}</p>}
+              {/* ── About you ── */}
+              <div className="flex flex-col gap-5 md:gap-6">
+                <div className={sectionLabelClass}>
+                  <span>A LITTLE ABOUT YOU</span>
+                  <span className="hairline-gold flex-1" />
                 </div>
 
-                <div>
-                  <label className={labelClass} htmlFor="businessType">TYPE OF BUSINESS</label>
-                  <input
-                    id="businessType"
-                    name="businessType"
-                    type="text"
-                    autoComplete="off"
-                    aria-invalid={!!errors.businessType}
-                    placeholder="Tree Services, HVAC, Plumbing…"
-                    value={formData.businessType}
-                    onChange={handleChange}
-                    className={ic("businessType")}
-                  />
-                  {errors.businessType && <p role="alert" className={errorMsgClass}>{errors.businessType}</p>}
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
+                  <div>
+                    <label className={labelClass} htmlFor="yourName">YOUR NAME</label>
+                    <input
+                      id="yourName"
+                      name="yourName"
+                      type="text"
+                      autoComplete="name"
+                      aria-invalid={!!errors.yourName}
+                      placeholder="Jordan Smith"
+                      value={formData.yourName}
+                      onChange={handleChange}
+                      className={ic("yourName")}
+                    />
+                    {errors.yourName && <p role="alert" className={errorMsgClass}>{errors.yourName}</p>}
+                  </div>
 
-                <div>
-                  <label className={labelClass} htmlFor="email">EMAIL ADDRESS</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    inputMode="email"
-                    aria-invalid={!!errors.email}
-                    placeholder="you@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={ic("email")}
-                  />
-                  {errors.email && <p role="alert" className={errorMsgClass}>{errors.email}</p>}
-                </div>
+                  <div>
+                    <label className={labelClass} htmlFor="businessName">BUSINESS NAME</label>
+                    <input
+                      id="businessName"
+                      name="businessName"
+                      type="text"
+                      autoComplete="organization"
+                      aria-invalid={!!errors.businessName}
+                      placeholder="Acme Tree Service"
+                      value={formData.businessName}
+                      onChange={handleChange}
+                      className={ic("businessName")}
+                    />
+                    {errors.businessName && <p role="alert" className={errorMsgClass}>{errors.businessName}</p>}
+                  </div>
 
-                <div>
-                  <label className={labelClass} htmlFor="phone">PHONE NUMBER</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    inputMode="tel"
-                    aria-invalid={!!errors.phone}
-                    placeholder="(208) 555-0100"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className={ic("phone")}
-                  />
-                  {errors.phone && <p role="alert" className={errorMsgClass}>{errors.phone}</p>}
+                  <div>
+                    <label className={labelClass} htmlFor="email">EMAIL ADDRESS</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      inputMode="email"
+                      aria-invalid={!!errors.email}
+                      placeholder="you@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={ic("email")}
+                    />
+                    {errors.email && <p role="alert" className={errorMsgClass}>{errors.email}</p>}
+                  </div>
+
+                  <div>
+                    <label className={labelClass} htmlFor="phone">PHONE NUMBER</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      aria-invalid={!!errors.phone}
+                      placeholder="(208) 555-0100"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className={ic("phone")}
+                    />
+                    {errors.phone && <p role="alert" className={errorMsgClass}>{errors.phone}</p>}
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label className={labelClass} htmlFor="hadWebsite">HAD A WEBSITE BEFORE?</label>
-                <CustomSelect
-                  id="hadWebsite"
-                  name="hadWebsite"
-                  value={formData.hadWebsite}
-                  options={websiteOptions}
-                  placeholder="Select one…"
-                  error={!!errors.hadWebsite}
-                  onChange={handleSelect}
-                />
-                {errors.hadWebsite && <p role="alert" className={errorMsgClass}>{errors.hadWebsite}</p>}
+              {/* ── About your business ── */}
+              <div className="flex flex-col gap-5 md:gap-6">
+                <div className={sectionLabelClass}>
+                  <span>ABOUT YOUR BUSINESS</span>
+                  <span className="hairline-gold flex-1" />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
+                  <div>
+                    <label className={labelClass} htmlFor="businessType">TYPE OF BUSINESS</label>
+                    <input
+                      id="businessType"
+                      name="businessType"
+                      type="text"
+                      autoComplete="off"
+                      aria-invalid={!!errors.businessType}
+                      placeholder="Tree Services, HVAC, Plumbing…"
+                      value={formData.businessType}
+                      onChange={handleChange}
+                      className={ic("businessType")}
+                    />
+                    {errors.businessType && <p role="alert" className={errorMsgClass}>{errors.businessType}</p>}
+                  </div>
+
+                  <div>
+                    <label className={labelClass} htmlFor="city">CITY / SERVICE AREA</label>
+                    <input
+                      id="city"
+                      name="city"
+                      type="text"
+                      autoComplete="address-level2"
+                      aria-invalid={!!errors.city}
+                      placeholder="Nampa, ID"
+                      value={formData.city}
+                      onChange={handleChange}
+                      className={ic("city")}
+                    />
+                    {errors.city && <p role="alert" className={errorMsgClass}>{errors.city}</p>}
+                  </div>
+                </div>
+
+                <div>
+                  <label className={labelClass} htmlFor="currentWebsite">
+                    CURRENT WEBSITE <span className="text-white/30 font-medium tracking-normal">(optional)</span>
+                  </label>
+                  <input
+                    id="currentWebsite"
+                    name="currentWebsite"
+                    type="text"
+                    autoComplete="url"
+                    inputMode="url"
+                    placeholder="yourbusiness.com — or leave blank if you don't have one"
+                    value={formData.currentWebsite}
+                    onChange={handleChange}
+                    className={inputClass}
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className={labelClass} htmlFor="goals">WHAT DO YOU WANT YOUR WEBSITE TO DO?</label>
-                <CustomSelect
-                  id="goals"
-                  name="goals"
-                  value={formData.goals}
-                  options={goalOptions}
-                  placeholder="Select your main goal…"
-                  error={!!errors.goals}
-                  onChange={handleSelect}
-                />
-                {errors.goals && <p role="alert" className={errorMsgClass}>{errors.goals}</p>}
+              {/* ── Your project ── */}
+              <div className="flex flex-col gap-5 md:gap-6">
+                <div className={sectionLabelClass}>
+                  <span>WHAT YOU&apos;RE AFTER</span>
+                  <span className="hairline-gold flex-1" />
+                </div>
+
+                <div>
+                  <label className={labelClass} htmlFor="hadWebsite">HAD A WEBSITE BEFORE?</label>
+                  <CustomSelect
+                    id="hadWebsite"
+                    name="hadWebsite"
+                    value={formData.hadWebsite}
+                    options={websiteOptions}
+                    placeholder="Select one…"
+                    error={!!errors.hadWebsite}
+                    onChange={handleSelect}
+                  />
+                  {errors.hadWebsite && <p role="alert" className={errorMsgClass}>{errors.hadWebsite}</p>}
+                </div>
+
+                <div>
+                  <label className={labelClass} htmlFor="goals">WHAT DO YOU WANT YOUR WEBSITE TO DO?</label>
+                  <CustomSelect
+                    id="goals"
+                    name="goals"
+                    value={formData.goals}
+                    options={goalOptions}
+                    placeholder="Select your main goal…"
+                    error={!!errors.goals}
+                    onChange={handleSelect}
+                  />
+                  {errors.goals && <p role="alert" className={errorMsgClass}>{errors.goals}</p>}
+                </div>
+
+                <div>
+                  <label className={labelClass} htmlFor="message">
+                    ANYTHING ELSE I SHOULD KNOW?{" "}
+                    <span className="text-white/30 font-medium tracking-normal">(optional)</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="What's the biggest thing you're hoping a new website fixes? Anything you love or hate about your current one?"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className={textareaClass}
+                  />
+                </div>
               </div>
 
               <button
@@ -304,7 +420,7 @@ export default function DemoForm() {
               </button>
 
               {status === "error" && (
-                <p className="text-red-400 text-lg text-center">
+                <p role="alert" className="text-red-400 text-lg text-center">
                   Something went wrong. Try emailing ethan@hoeperstudio.com directly.
                 </p>
               )}

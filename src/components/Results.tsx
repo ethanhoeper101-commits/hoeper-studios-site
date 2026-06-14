@@ -66,7 +66,7 @@ const card: Variants = {
 
 export default function Results() {
   return (
-    <section className="relative px-4 md:px-8 py-10 md:py-16 overflow-hidden">
+    <section className="relative px-4 md:px-8 pt-6 md:pt-6 pb-10 md:pb-16 overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
