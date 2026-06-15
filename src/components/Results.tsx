@@ -11,6 +11,7 @@ import {
 
 type Stat = {
   value: number;
+  from?: number;
   prefix?: string;
   suffix?: string;
   label: string;
@@ -20,12 +21,12 @@ type Stat = {
 const stats: Stat[] = [
   { value: 7, suffix: "-day", label: "Average turnaround to a live site" },
   { value: 100, suffix: "%", label: "Custom built — never a template" },
-  { value: 0, prefix: "$", label: "Upfront cost to see your demo" },
+  { value: 0, from: 100, prefix: "$", label: "Upfront cost to see your demo" },
   { value: 24, suffix: "hr", label: "Typical reply time to every message" },
 ];
 
-function CountUp({ value, prefix = "", suffix = "", decimals = 0 }: Stat) {
-  const [display, setDisplay] = useState("0");
+function CountUp({ value, from = 0, prefix = "", suffix = "", decimals = 0 }: Stat) {
+  const [display, setDisplay] = useState(() => from.toFixed(decimals));
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduceMotion = useReducedMotion();
@@ -36,7 +37,7 @@ function CountUp({ value, prefix = "", suffix = "", decimals = 0 }: Stat) {
       setDisplay(value.toFixed(decimals));
       return;
     }
-    const controls = animate(0, value, {
+    const controls = animate(from, value, {
       duration: 1.6,
       ease: [0.16, 1, 0.3, 1],
       onUpdate(latest) {
@@ -44,7 +45,7 @@ function CountUp({ value, prefix = "", suffix = "", decimals = 0 }: Stat) {
       },
     });
     return () => controls.stop();
-  }, [inView, value, decimals, reduceMotion]);
+  }, [inView, value, from, decimals, reduceMotion]);
 
   return (
     <span ref={ref} className="tabular-nums">
