@@ -22,10 +22,31 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
+const siteUrl = "https://hoeperstudio.com";
+const description =
+  "Premium websites for local service businesses. Fast turnaround, SEO optimized, no contracts. Based in Star, Idaho.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Hoeper Studios — Web Design for Local Businesses in Idaho",
-  description:
-    "Premium websites for local service businesses. Fast turnaround, SEO optimized, no contracts. Based in Nampa, Idaho.",
+  description,
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Hoeper Studios",
+    title: "Hoeper Studios — Web Design for Local Businesses in Idaho",
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hoeper Studios — Web Design for Local Businesses in Idaho",
+    description,
+  },
 };
 
 export default function RootLayout({

@@ -117,6 +117,8 @@ export default function DemoForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formData, setFormData] = useState<FormData>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  // Honeypot — must stay empty; only bots fill hidden fields.
+  const [company, setCompany] = useState("");
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -144,7 +146,7 @@ export default function DemoForm() {
       const res = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, company }),
       });
       if (res.ok) {
         setStatus("success");
@@ -224,6 +226,30 @@ export default function DemoForm() {
               exit={{ opacity: 0, y: -10 }}
               className="flex flex-col gap-7 md:gap-9 rounded-sm border border-border-gold bg-surface-card/50 backdrop-blur-sm p-6 md:p-12 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]"
             >
+              {/* Honeypot — hidden from people, catches bots */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  width: 1,
+                  height: 1,
+                  overflow: "hidden",
+                  clip: "rect(0 0 0 0)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <label htmlFor="company">Company (leave this blank)</label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </div>
+
               {/* ── About you ── */}
               <div className="flex flex-col gap-5 md:gap-6">
                 <div className={sectionLabelClass}>
@@ -332,7 +358,7 @@ export default function DemoForm() {
                       type="text"
                       autoComplete="address-level2"
                       aria-invalid={!!errors.city}
-                      placeholder="Nampa, ID"
+                      placeholder="Star, ID"
                       value={formData.city}
                       onChange={handleChange}
                       className={ic("city")}
@@ -437,6 +463,17 @@ export default function DemoForm() {
                   </span>
                 ))}
               </div>
+
+              {/* Prefer to talk now */}
+              <p className="text-center text-sm text-gray-muted">
+                Prefer to talk now? Call or text{" "}
+                <a
+                  href="tel:+12089998744"
+                  className="font-semibold text-gold gold-underline hover:text-gold-light"
+                >
+                  (208) 999-8744
+                </a>
+              </p>
             </motion.form>
           )}
         </AnimatePresence>

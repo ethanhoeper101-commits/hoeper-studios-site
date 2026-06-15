@@ -3,9 +3,57 @@ import { NextResponse } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Hosts allowed to submit the form. Covers prod, Vercel previews, and local dev.
+const ALLOWED_HOSTS = ["hoeperstudio.com", "www.hoeperstudio.com"];
+
+function isAllowedOrigin(origin: string | null): boolean {
+  if (!origin) return true; // some legitimate clients omit Origin
+  try {
+    const host = new URL(origin).host;
+    return (
+      ALLOWED_HOSTS.includes(host) ||
+      host.endsWith(".vercel.app") ||
+      host.startsWith("localhost")
+    );
+  } catch {
+    return false;
+  }
+}
+
+// Best-effort in-memory rate limit (per warm instance): 5 requests / 10 min per IP.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const hits = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  return recent.length > RATE_LIMIT;
+}
+
 export async function POST(req: Request) {
   try {
+    // 1. Reject cross-origin submissions
+    if (!isAllowedOrigin(req.headers.get("origin"))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    // 2. Throttle abusive IPs
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body = await req.json();
+
+    // 3. Honeypot — if the hidden field is filled, it's a bot. Pretend success.
+    if (body.company) {
+      return NextResponse.json({ success: true });
+    }
+
     const {
       yourName,
       businessName,

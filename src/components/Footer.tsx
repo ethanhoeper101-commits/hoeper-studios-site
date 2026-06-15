@@ -1,4 +1,4 @@
-import { IconMail, IconMapPin, IconArrowUpRight } from "@tabler/icons-react";
+import { IconMail, IconMapPin, IconArrowUpRight, IconPhone } from "@tabler/icons-react";
 import FadeUp from "./FadeUp";
 
 const footerLinks = [
@@ -73,6 +73,13 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-3 md:items-start">
             <p className="mb-1 text-xs font-bold tracking-[0.25em] text-gold/70">GET IN TOUCH</p>
             <a
+              href="tel:+12089998744"
+              className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold"
+            >
+              <IconPhone size={16} className="text-gold" stroke={1.7} />
+              (208) 999-8744
+            </a>
+            <a
               href="mailto:ethan@hoeperstudio.com"
               className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold"
             >
@@ -81,7 +88,7 @@ export default function Footer() {
             </a>
             <span className="inline-flex items-center gap-2 text-sm text-white/70">
               <IconMapPin size={16} className="text-gold" stroke={1.7} />
-              Nampa, Idaho · serving the Treasure Valley
+              Star, Idaho · serving the Treasure Valley
             </span>
           </div>
         </div>
