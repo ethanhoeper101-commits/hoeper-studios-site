@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Hoeper Studios">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E2C97E"/>
+      <stop offset="0.55" stop-color="#C9A84C"/>
+      <stop offset="1" stop-color="#A07F38"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0A0A0A"/>
+  <rect x="0.9" y="0.9" width="62.2" height="62.2" rx="13.1" fill="none" stroke="#C9A84C" stroke-opacity="0.28" stroke-width="1.6"/>
+  <g fill="url(#gold)">
+    <rect x="19" y="15" width="8" height="34" rx="1.5"/>
+    <rect x="37" y="15" width="8" height="34" rx="1.5"/>
+    <rect x="14" y="33" width="31" height="7" rx="1.5"/>
+  </g>
+</svg>

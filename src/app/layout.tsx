@@ -31,8 +31,11 @@ export const metadata: Metadata = {
   title: "Hoeper Studios — Web Design for Local Businesses in Idaho",
   description,
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.svg",
     apple: "/favicon.png",
   },
   openGraph: {
